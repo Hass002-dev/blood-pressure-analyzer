@@ -38,13 +38,18 @@ nav {
 }
 a, button {
   color: #FFFFFF;
-  background-color: #0056B3; /* Solid blue buttons */
-  text-decoration: none;     /* Removes the ugly default underline on links */
+  background-color: #0056B3;
+  text-decoration: none;
   padding: 10px 20px;
   border-radius: 6px;
   font-weight: bold;
   border: none;
-  margin-top: 15px;
+}
+footer a {
+  background-color: transparent;
+  color: #0056B3;
+  padding: 0;
+  font-weight: normal;
 }
 button {
   font-size: 1.4rem;
@@ -101,6 +106,7 @@ footer {
 }
     </style>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blood Pressure Analyser</title>
 </head>
 
@@ -109,7 +115,7 @@ footer {
         <h1>PERSONAL BLOOD PRESSURE ANALYSER</h1>
         <p>Enter Your Systolic and Diastolic Numbers</p>
            <nav class="nav-bar">
-            <a href="./BP.html">Home</a>
+            <a href="./index.html">Home</a>
             <a href="./info.html">Information</a>
             <a href="./indexabout.html">About</a>
         </nav>
@@ -138,7 +144,7 @@ footer {
 
     <footer> 
         <p>&copy; 2026 Blood Pressure Analyser. All rights reserved.</p>
-        <a href="./indexabout.html">About the Developer</a> | <a href="info.html">Information</a> | <a href="BP.html">Check BP</a>
+        <a href="./indexabout.html">About the Developer</a> | <a href="./info.html">Information</a> | <a href="./index.html">Check BP</a>
     </footer>
 
     <script>

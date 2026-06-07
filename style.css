@@ -19,9 +19,9 @@ h1, h2, h3 {
   border: 1px solid #E0E0E0; /* A clean silver border */
   padding: 30px;
 }
-.nav-bar:{
+.nav-bar {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 /* 4. THE NAVIGATION BAR */
@@ -59,9 +59,19 @@ nav a:hover {
 footer {
   background-color: #FFFFFF;
   padding: 15px 30px;
-  border-top: 2px solid #0056B3; /* Matches the nav bar with a blue stripe at the top */
+  border-top: 2px solid #0056B3;
   text-align: center;
   margin-top: 30px;
+}
+footer a {
+  background-color: transparent;
+  color: #0056B3;
+  padding: 0;
+  font-weight: normal;
+}
+.about {
+  margin: 20px auto;
+  width: 80%;
 }
 @media (max-width: 600px) {
   .form-container, .cards, .about, .intro, .actions {
