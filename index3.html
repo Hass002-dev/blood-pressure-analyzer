@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Debugging</title>
+  <style>
+    body { 
+        background-color: white;
+        color: black;
+        font-family: 'Times New Roman', Times, serif;
+        transition: background-color 0.4s, color 0.4s;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #banner {
+        background-color: burlywood;
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+        font-size: larger;
+        font-weight: bold;
+        border-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        border-radius: 5%;
+    }
+
+     .dark-theme {
+            background-color: #2d3436;
+            color: #dfe6e9;
+        }
+
+        /* Sticker 2: Hidden */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Sticker 3: Liked */
+        .liked {
+            background-color: #ff7675;
+            color: white;
+            border-color: #d63031;
+        }
+
+  </style>
+</head>
+
+<body>
+    <div id="banner"> 
+         <span> Welcome back Man</span>
+        <button class="butt"> Close X</button>
+    </div>
+    
+    <div class="Dom">
+        <h1> Hello Man</h1>
+        <p>Try clicking the links below to trigger the holy JavaScript.</p>
+        <button class="toggle-dark-mode"> 🌙 Toggle Dark Mode</button>
+        <button class="like-button">🤍 Like</button>
+    </div>
+
+    <script>
+        // 1. Dark Mode Toggle (This was perfect!)
+        var darbtn = document.querySelector(".toggle-dark-mode");
+        var pagebody = document.querySelector("body");
+        
+        darbtn.addEventListener("click", function() {
+            pagebody.classList.toggle("dark-theme");
+        });
+
+        // 2. Banner Close (Fixed target)
+        var banner = document.querySelector("#banner");
+        var closebtn = document.querySelector(".butt");
+        
+        // BUG FIX: Changed 'banner' to 'closebtn' so only the X closes it!
+        closebtn.addEventListener("click", function() { 
+            banner.classList.add("hidden");
+        });
+
+        // 3. Like Button Toggle (Fixed logic and spelling)
+        var likebtn = document.querySelector(".like-button");
+        
+        likebtn.addEventListener("click", function() { 
+            // Toggle the class
+            likebtn.classList.toggle("liked");
+            
+            // BUG FIX: Moved the IF statement INSIDE the event listener!
+            // BUG FIX: Corrected 'likeBtn' to 'likebtn'
+            if (likebtn.classList.contains("liked")) {
+                likebtn.innerHTML = "❤️ Hey";
+            } else {
+                likebtn.innerHTML = "🤍 Like"; 
+            }
+        });
+    </script>
+  </body>
+</html>

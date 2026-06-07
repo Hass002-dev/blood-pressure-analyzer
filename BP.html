@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+  background-color: #F4F4F9; 
+  color: #333333;           
+  font-family: sans-serif;
+}
+h1, h2, h3 {
+  color: #0056B3; /* Makes all your titles that professional healthcare blue */
+  margin-bottom: 15px; 
+}
+.form-container {
+  text-align: center;
+  background-color: #FFFFFF; /* Pure white to make them pop off the gray canvas */
+  border-radius: 12px;       /* Soft, modern rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* A very subtle 3D shadow */
+  border: 1px solid #E0E0E0; /* A clean silver border */
+  padding: 30px;
+  margin: 20px auto;
+  width: 80%;
+}
+.heading {
+    text-align: center;
+}
+
+/* 4. THE NAVIGATION BAR */
+nav {
+  background-color: #FFFFFF;
+  padding: 15px 30px;
+  border-bottom: 2px solid #0056B3; /* A nice blue racing stripe at the bottom */
+}
+.nav-bar {
+    display: flex;
+    justify-content: end;
+}
+a, button {
+  color: #FFFFFF;
+  background-color: #0056B3; /* Solid blue buttons */
+  text-decoration: none;     /* Removes the ugly default underline on links */
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+  margin-top: 15px;
+}
+button {
+  font-size: 1.4rem;
+}
+
+/* Make them interactive when hovered! */
+a:hover, button:hover {
+  background-color: #003D82; /* Darkens the blue slightly when the mouse is over it */
+  cursor: pointer;
+}
+
+/* Override the nav links so they look like text, not blocks */
+nav a {
+  background-color: transparent;
+  color: #333333;
+}
+nav a:hover {
+  color: #0056B3; /* Nav links just turn blue on hover instead of getting a background */
+}
+
+.input-group {
+    padding:8px;
+}
+label, input {
+    height: 40px;
+    font-size: 1.2rem;
+    margin: 10px;
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-top: 2px solid #0056B3;
+    margin-top: 30px;
+} 
+@media (max-width: 600px) {
+  .form-container { 
+    width: 95%; /* Full width on small screens */
+    padding: 20px; /* Less padding to fit better */
+    }
+    .nav-bar {
+        justify-content: center; /* Center nav links on mobile */
+        display: block; /* Stack nav links vertically */
+        text-align: center;
+        gap: 10px;
+    }
+    footer {
+        font-size: 0.9rem; /* Smaller text in footer on mobile */
+        gap: 5px;
+        display: block;
+        padding: 10px;
+        margin-top: 20px;
+    }
+}
+    </style>
+  <meta charset="UTF-8">
+  <title>Blood Pressure Analyser</title>
+</head>
+
+<body>
+    <div class="heading"> 
+        <h1>PERSONAL BLOOD PRESSURE ANALYSER</h1>
+        <p>Enter Your Systolic and Diastolic Numbers</p>
+           <nav class="nav-bar">
+            <a href="./BP.html">Home</a>
+            <a href="./info.html">Information</a>
+            <a href="./indexabout.html">About</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Enter Your Readings</h2>
+            
+            <form>
+                <div class="input-group">
+                <label for="systolic">Systolic (Top Number):</label>
+                <input type="number" id="systolic" placeholder="e.g., 120">
+                </div>
+
+                <div class="input-group">
+                <label for="diastolic">Diastolic (Bottom Number):</label>
+                <input type="number" id="diastolic" placeholder="e.g., 80">
+                </div>
+
+                <button type="submit">Analyze Pressure</button>
+            </form>
+            <div id="result-display" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+
+    <footer> 
+        <p>&copy; 2026 Blood Pressure Analyser. All rights reserved.</p>
+        <a href="./indexabout.html">About the Developer</a> | <a href="info.html">Information</a> | <a href="BP.html">Check BP</a>
+    </footer>
+
+    <script>
+// 1. SELECT THE FORM AND THE STAGE
+      const form = document.querySelector('form');
+      const resultDisplay = document.getElementById('result-display');
+
+      // 2. HIJACK THE BUTTON
+      form.addEventListener('submit', function(event) {
+        
+        // STOP the page from reloading!
+        event.preventDefault(); 
+
+        // 3. STEAL THE NUMBERS
+        const sys = parseInt(document.getElementById('systolic').value);
+        const dia = parseInt(document.getElementById('diastolic').value);
+
+        // Error Check: Did they leave it blank?
+        if (isNaN(sys) || isNaN(dia)) {
+          resultDisplay.innerHTML = `<h3 style="color: red;">Hey! You forgot to type your numbers in!</h3>`;
+          return; 
+        }
+
+        // 4. THE BRAIN & THE PROJECTOR (The Logic Tree)
+        let finalMessage = "";
+
+        // CONDITION 1: LOW (Purple Area - Catch the bottom extreme first)
+        if (sys <= 90 || dia <= 60) {
+          finalMessage = `
+            <h2 style="color: #8A2BE2;">Low Blood Pressure!</h2>
+            <p>Your battery is running low! Have you eaten? Drink some water and take it easy.</p>
+            <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3azk3dXM5cDdlcHg5c25kamJ6M20yZmYzcnNhOTRmNXo5bm00cmY1aSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MD5PBnnaV0uufmVMlO/giphy.gif" alt="Fainting SpongeBob" style="width: 100%; border-radius: 10px; margin-top: 10px;">
+          `;
+        } 
+        
+        // CONDITION 2: HYPERTENSIVE CRISIS (Catch the top extreme)
+        else if (sys >= 180 || dia >= 120) {
+          finalMessage = `
+            <h2 style="color: red;">CRISIS MODE! WEE WOO WEE WOO!</h2>
+            <p>Stop looking at this app and call emergency services right now!</p>
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaG81anF0aGVoeTVqZXJ5cHFxdnV4MGF5ZzEwNnZkdXIxMHN1MmM3byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QmKySYr0lCsrC/giphy.gif" alt="Ambulance sirens" style="width: 100%; border-radius: 10px; margin-top: 10px;">
+          `;
+        } 
+        
+        // CONDITION 3: HIGH (Red Area)
+        else if (sys >= 140 || dia >= 90) {
+          finalMessage = `
+            <h2 style="color: tomato;">High Blood Pressure!</h2>
+            <p>Your heart is working overtime. Time to consult a professional!</p>
+            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDdod3I2bmtibzBsN3RkeWNzYXU0N3N4Y3B1MzA3a28zYWtnbjg5cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vg1ppqHpatVxNdYUa5/giphy.gif" alt="Shocked face" style="width: 100%; border-radius: 10px; margin-top: 10px;">
+          `;
+        }
+        
+        // CONDITION 4: PRE-HIGH (Yellow Area)
+        else if (sys >= 120 || dia >= 80) {
+          finalMessage = `
+            <h2 style="color: darkorange;">Pre-High Blood Pressure!</h2>
+            <p>You are creeping up! Put down the salt shaker and go for a walk.</p>
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2g2d2VnZnVhM2I2OWZvczhvOGRzdWJiamVoYWZ4MnVmZ2tzbmtndyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5xtDarIN81U0KvlnzKo/giphy.gif" alt="Sweating nervously" style="width: 100%; border-radius: 10px; margin-top: 10px;">
+          `;
+        }
+        
+        // CONDITION 5: IDEAL (Green Area - If it's not Low, not High, and not Pre-High, it must be Ideal!)
+        else {
+          finalMessage = `
+            <h2 style="color: mediumseagreen;">Ideal! Normal Range.</h2>
+            <p>Your heart is ticking perfectly. Keep doing what you are doing!</p>
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExczcyemE5amVqdGFmZ3RxYW13dzYzNWJ6N3pxNjhqNGp3ZWI3ZGpkZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9Ai5dIk8xvBm0/giphy.gif" alt="Thumbs up doctor" style="width: 100%; border-radius: 10px; margin-top: 10px;">
+          `;
+        }
+
+        // INJECT THE MESSAGE INTO THE HTML STAGE!
+        resultDisplay.innerHTML = finalMessage;
+
+      });
+    
+    </script>
+</body>
+</html>

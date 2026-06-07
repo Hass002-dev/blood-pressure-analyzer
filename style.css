@@ -1,0 +1,71 @@
+/* 1. THE CANVAS */
+body {
+  background-color: #F4F4F9; /* The soft medical gray */
+  color: #333333;            /* The deep charcoal text */
+  font-family: sans-serif;
+}
+
+/* 2. THE HEADINGS */
+h1, h2, h3 {
+  color: #0056B3; /* Makes all your titles that professional healthcare blue */
+  margin-bottom: 15px; 
+}
+
+/* 3. THE SURFACES (Your Cards and Forms) */
+.form-container, .cards, .about, .intro, .actions {
+  background-color: #FFFFFF; /* Pure white to make them pop off the gray canvas */
+  border-radius: 12px;       /* Soft, modern rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* A very subtle 3D shadow */
+  border: 1px solid #E0E0E0; /* A clean silver border */
+  padding: 30px;
+}
+.nav-bar:{
+    display: flex;
+    justify-content: end;
+}
+
+/* 4. THE NAVIGATION BAR */
+nav {
+  background-color: #FFFFFF;
+  padding: 15px 30px;
+  border-bottom: 2px solid #0056B3; /* A nice blue racing stripe at the bottom */
+}
+
+/* 5. LINKS & BUTTONS (The Action Items) */
+a, button {
+  color: #FFFFFF;
+  background-color: #0056B3; /* Solid blue buttons */
+  text-decoration: none;     /* Removes the ugly default underline on links */
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+}
+
+/* Make them interactive when hovered! */
+a:hover, button:hover {
+  background-color: #003D82; /* Darkens the blue slightly when the mouse is over it */
+  cursor: pointer;
+}
+
+/* Override the nav links so they look like text, not blocks */
+nav a {
+  background-color: transparent;
+  color: #333333;
+}
+nav a:hover {
+  color: #0056B3; /* Nav links just turn blue on hover instead of getting a background */
+}
+footer {
+  background-color: #FFFFFF;
+  padding: 15px 30px;
+  border-top: 2px solid #0056B3; /* Matches the nav bar with a blue stripe at the top */
+  text-align: center;
+  margin-top: 30px;
+}
+@media (max-width: 600px) {
+  .form-container, .cards, .about, .intro, .actions {
+    padding: 20px; /* Less padding on mobile for better fit */
+  }
+  
+}
