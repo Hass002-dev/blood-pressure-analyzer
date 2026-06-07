@@ -28,7 +28,11 @@ h1, h2, h3 {
 nav {
   background-color: #FFFFFF;
   padding: 15px 30px;
-  border-bottom: 2px solid #0056B3; /* A nice blue racing stripe at the bottom */
+  border-bottom: 2px solid #0056B3;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
 /* 5. LINKS & BUTTONS (The Action Items) */
@@ -52,6 +56,7 @@ a:hover, button:hover {
 nav a {
   background-color: transparent;
   color: #333333;
+  white-space: nowrap;
 }
 nav a:hover {
   color: #0056B3; /* Nav links just turn blue on hover instead of getting a background */
@@ -72,6 +77,9 @@ footer a {
 .about {
   margin: 20px auto;
   width: 80%;
+}
+.cards h2 {
+  text-align: center;
 }
 @media (max-width: 600px) {
   .form-container, .cards, .about, .intro, .actions {
